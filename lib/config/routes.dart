@@ -6,6 +6,9 @@ import '../features/auth/views/login_screen.dart';
 import '../features/auth/views/register_screen.dart';
 import '../features/dashboard/views/dashboard_screen.dart';
 import '../features/properties/views/properties_screen.dart';
+import '../features/properties/views/add_property_screen.dart';
+import '../features/properties/views/property_detail_screen.dart';
+import '../features/tenants/views/assign_tenant_screen.dart';
 import '../features/tenants/views/tenants_screen.dart';
 import '../features/finances/views/finances_screen.dart';
 import '../features/communications/views/communications_screen.dart';
@@ -18,6 +21,8 @@ class AppRoutes {
   
   static const String dashboard = '/dashboard';
   static const String properties = '/properties';
+  static const String propertyDetail = '/properties/:id';
+  static const String addProperty = '/properties/add';
   static const String tenants = '/tenants';
   static const String finances = '/finances';
   static const String communications = '/communications';
@@ -48,6 +53,30 @@ class AppRoutes {
       GoRoute(
         path: properties,
         builder: (context, state) => const PropertiesScreen(),
+      ),
+      GoRoute(
+        path: addProperty,
+        builder: (context, state) => const AddPropertyScreen(),
+      ),
+      GoRoute(
+        path: propertyDetail,
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return PropertyDetailScreen(propertyId: id);
+        },
+      ),
+      GoRoute(
+        path: '/properties/:propertyId/units/:unitId/assign',
+        builder: (context, state) {
+          final propertyId = state.pathParameters['propertyId']!;
+          final unitId = state.pathParameters['unitId']!;
+          final unitName = state.uri.queryParameters['unitName'] ?? 'Unit';
+          return AssignTenantScreen(
+            propertyId: propertyId,
+            unitId: unitId,
+            unitName: unitName,
+          );
+        },
       ),
       GoRoute(
         path: tenants,

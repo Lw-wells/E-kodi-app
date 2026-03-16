@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "463365642651",
+    "project_id": "e-kodi-dashboard",
+    "storage_bucket": "e-kodi-dashboard.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463365642651:android:2f70bcaa81b2656725a93e",
+        "android_client_info": {
+          "package_name": "com.ekodi.e_kodi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhnXY1MvKZOMdMBIfVuyxtVLavwT9IleY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

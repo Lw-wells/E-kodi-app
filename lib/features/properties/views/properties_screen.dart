@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../shared/widgets/app_layout.dart';
 import '../../../config/routes.dart';
 
@@ -19,7 +20,7 @@ class PropertiesScreen extends StatelessWidget {
               children: [
                 Text('Properties Management', style: Theme.of(context).textTheme.headlineMedium),
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () => context.go(AppRoutes.addProperty),
                   icon: const Icon(Icons.add),
                   label: const Text('Add Property'),
                 ),
@@ -41,6 +42,9 @@ class PropertiesScreen extends StatelessWidget {
                       title: Text('Property Block ${String.fromCharCode(65 + index)}'),
                       subtitle: const Text('10 Units • 2 Vacant • Nairobi'),
                       trailing: IconButton(icon: const Icon(Icons.edit), onPressed: () {}),
+                      onTap: () {
+                        context.go('/properties/$index');
+                      },
                     );
                   },
                 ),
