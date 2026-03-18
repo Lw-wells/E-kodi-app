@@ -73,3 +73,13 @@ class DefaultFirebaseOptions {
         iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'] ?? '',
       );
 }
+
+
+// static FirebaseOptions get web => FirebaseOptions(
+//   apiKey: "AIzaSyDljEZjQNwTu4RbCWGMWQP41q39YDUw-JA",
+//   appId: "1:463365642651:web:d91b991907e74fbc25a93e",
+//   messagingSenderId: "463365642651",
+//   projectId: "e-kodi-dashboard",
+//   authDomain: "e-kodi-dashboard.firebaseapp.com",
+//   storageBucket: "e-kodi-dashboard.firebasestorage.app",
+// );
