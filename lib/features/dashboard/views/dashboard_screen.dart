@@ -134,34 +134,73 @@ class DashboardScreen extends StatelessWidget {
   }
 
   Widget _buildQuickActions(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Quick Actions', style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 16),
-            ListTile(
-              leading: const Icon(Icons.add_home),
-              title: const Text('Add Property'),
-              onTap: () => context.go(AppRoutes.addProperty),
-            ),
-            ListTile(
-              leading: const Icon(Icons.person_add),
-              title: const Text('Add Tenant'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(Icons.message),
-              title: const Text('Send Announcement'),
-              onTap: () {},
-            ),
-          ],
-        ),
+  return Card(
+    child: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Quick Actions', style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 16),
+          ListTile(
+            leading: const Icon(Icons.add_home),
+            title: const Text('Add Property'),
+            onTap: () => context.go(AppRoutes.addProperty),
+          ),
+          ListTile(
+            leading: const Icon(Icons.person_add),
+            title: const Text('Add Tenant'),
+            // ✅ Guide landlord to pick a property first, then assign from unit
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Select a property, then tap "Assign Tenant" on a vacant unit.'),
+                  duration: Duration(seconds: 4),
+                ),
+              );
+              context.go(AppRoutes.properties);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.message),
+            title: const Text('Send Announcement'),
+            onTap: () {},
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
+  // Widget _buildQuickActions(BuildContext context) {
+  //   return Card(
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(16.0),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Text('Quick Actions', style: Theme.of(context).textTheme.titleLarge),
+  //           const SizedBox(height: 16),
+  //           ListTile(
+  //             leading: const Icon(Icons.add_home),
+  //             title: const Text('Add Property'),
+  //             onTap: () => context.go(AppRoutes.addProperty),
+  //           ),
+  //           ListTile(
+  //             leading: const Icon(Icons.person_add),
+  //             title: const Text('Add Tenant'),
+  //             onTap: () {},
+  //           ),
+  //           ListTile(
+  //             leading: const Icon(Icons.message),
+  //             title: const Text('Send Announcement'),
+  //             onTap: () {},
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _buildSummaryCard(BuildContext context, String title, String value, IconData icon, Color color) {
     return Card(
