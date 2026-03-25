@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../shared/widgets/app_layout.dart';
 import '../../../config/routes.dart';
+import 'utility_bills_tab.dart';
 
 class FinancesScreen extends StatelessWidget {
   const FinancesScreen({super.key});
@@ -17,7 +18,8 @@ class FinancesScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Finances & M-Pesa', style: Theme.of(context).textTheme.headlineMedium),
+                Text('Finances & M-Pesa',
+                    style: Theme.of(context).textTheme.headlineMedium),
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.download),
@@ -26,6 +28,7 @@ class FinancesScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 24),
+
             Expanded(
               child: DefaultTabController(
                 length: 3,
@@ -39,27 +42,39 @@ class FinancesScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    Expanded(
+                    const Expanded(
                       child: TabBarView(
                         children: [
-                          Card(
-                            child: ListView.builder(
-                              itemCount: 10,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  leading: const Icon(Icons.money, color: Colors.green),
-                                  title: Text('M-Pesa Paybill - KES ${10000 + (index * 500)}'),
-                                  subtitle: Text('Receipt QWX... • from 0700... • ${index + 1} hrs ago'),
-                                  trailing: Chip(
-                                    label: const Text('Matched', style: TextStyle(color: Colors.white)),
-                                    backgroundColor: Colors.green[400],
-                                  ),
-                                );
-                              },
+                          // M-Pesa tab — placeholder until M-Pesa integration
+                          Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(Icons.phone_android,
+                                    size: 64, color: Colors.grey),
+                                SizedBox(height: 16),
+                                Text('M-Pesa integration coming soon',
+                                    style: TextStyle(color: Colors.grey)),
+                              ],
                             ),
                           ),
-                          const Center(child: Text('Utility Bills Tracking (Water / Electricity)')),
-                          const Center(child: Text('Property Expenses log')),
+
+                          // ✅ Utility Bills tab — fully wired
+                          UtilityBillsTab(),
+
+                          // Expenses tab — placeholder
+                          Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(Icons.receipt_long,
+                                    size: 64, color: Colors.grey),
+                                SizedBox(height: 16),
+                                Text('Expenses log coming soon',
+                                    style: TextStyle(color: Colors.grey)),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
