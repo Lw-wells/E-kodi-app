@@ -1,1 +1,49 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"e-kodi-dashboard","appId":"1:463365642651:android:2f70bcaa81b2656725a93e","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"e-kodi-dashboard","appId":"1:463365642651:ios:b55011cd5f5a3a8425a93e","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"e-kodi-dashboard","configurations":{"android":"1:463365642651:android:2f70bcaa81b2656725a93e","ios":"1:463365642651:ios:b55011cd5f5a3a8425a93e","web":"1:463365642651:web:d91b991907e74fbc25a93e"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "e-kodi-dashboard",
+          "appId": "1:463365642651:android:2f70bcaa81b2656725a93e",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "e-kodi-dashboard",
+          "appId": "1:463365642651:ios:b55011cd5f5a3a8425a93e",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "e-kodi-dashboard",
+          "configurations": {
+            "android": "1:463365642651:android:2f70bcaa81b2656725a93e",
+            "ios": "1:463365642651:ios:b55011cd5f5a3a8425a93e",
+            "web": "1:463365642651:web:d91b991907e74fbc25a93e"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "disallowLegacyRuntimeConfig": true,
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ]
+}

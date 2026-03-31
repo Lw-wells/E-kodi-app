@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../shared/widgets/app_layout.dart';
 import '../../../config/routes.dart';
 import 'utility_bills_tab.dart';
+import 'mpesa_ledger_tab.dart'; // ✅ new
 
 class FinancesScreen extends StatelessWidget {
   const FinancesScreen({super.key});
@@ -45,24 +46,8 @@ class FinancesScreen extends StatelessWidget {
                     const Expanded(
                       child: TabBarView(
                         children: [
-                          // M-Pesa tab — placeholder until M-Pesa integration
-                          Center(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(Icons.phone_android,
-                                    size: 64, color: Colors.grey),
-                                SizedBox(height: 16),
-                                Text('M-Pesa integration coming soon',
-                                    style: TextStyle(color: Colors.grey)),
-                              ],
-                            ),
-                          ),
-
-                          // ✅ Utility Bills tab — fully wired
+                          MpesaLedgerTab(), // ✅ wired
                           UtilityBillsTab(),
-
-                          // Expenses tab — placeholder
                           Center(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,

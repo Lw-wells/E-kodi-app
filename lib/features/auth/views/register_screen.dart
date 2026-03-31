@@ -228,7 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     filled: true,
-                    fillColor: Colors.grey.shade50,
+                    fillColor: Colors.grey.shade900,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -252,7 +252,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     filled: true,
-                    fillColor: Colors.grey.shade50,
+                    fillColor: Colors.grey.shade900,
                   ),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
@@ -278,7 +278,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     filled: true,
-                    fillColor: Colors.grey.shade50,
+                    fillColor: Colors.grey.shade900,
                   ),
                   keyboardType: TextInputType.phone,
                   validator: (value) {
@@ -313,7 +313,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     filled: true,
-                    fillColor: Colors.grey.shade50,
+                    fillColor: Colors.grey.shade900,
                   ),
                   obscureText: _obscurePassword,
                   validator: (value) {
