@@ -13,6 +13,7 @@ import '../features/tenants/views/tenants_screen.dart';
 import '../features/finances/views/finances_screen.dart';
 import '../features/finances/views/add_utility_screen.dart';
 import '../features/communications/views/communications_screen.dart';
+import '../features/communications/views/compose_message_screen.dart';
 
 class AppRoutes {
   static const String splash        = '/';
@@ -27,6 +28,8 @@ class AppRoutes {
   static const String addUtility    = '/finances/add-utility';
   static const String finances      = '/finances';
   static const String communications = '/communications';
+  static const String composeMessage = '/communications/compose';
+  
 
   static final GoRouter router = GoRouter(
     initialLocation: splash,
@@ -63,7 +66,11 @@ class AppRoutes {
       // ✅ /finances/add-utility BEFORE /finances
       GoRoute(path: addUtility,     builder: (context, state) => const AddUtilityScreen()),
       GoRoute(path: finances,       builder: (context, state) => const FinancesScreen()),
-
+      
+      GoRoute(
+  path: '/communications/compose',
+  builder: (context, state) => const ComposeMessageScreen(),
+),
       GoRoute(path: communications, builder: (context, state) => const CommunicationsScreen()),
     ],
   );

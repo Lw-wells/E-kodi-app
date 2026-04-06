@@ -279,7 +279,7 @@ class DashboardScreen extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.message),
               title: const Text('Send Announcement'),
-              onTap: () {},
+              onTap: () => context.go('/communications/compose'),
             ),
           ],
         ),
