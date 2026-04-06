@@ -402,7 +402,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 |---------|---------|
 | 📧 Email | support@ekodi.com |
 | 🐛 Issues | [GitHub Issues](https://github.com/yourusername/e-kodi/issues) |
-| 📖 Docs | [https://ekodi.com/docs]([https://ekodi.com/docs](https://docs.google.com/document/d/1ejuqHpE625HwqObfYUtBoWICzAWfAPjGQaJIITNYu2s/edit?usp=sharing)) |
+| 📖 Docs | [https://ekodi.com/docs]((https://docs.google.com/document/d/1ejuqHpE625HwqObfYUtBoWICzAWfAPjGQaJIITNYu2s/edit?usp=sharing)) |
 | 💬 Twitter | [@EKodiApp](https://twitter.com/EKodiApp) |
 
 ---
