@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       if (mounted) {
-        context.go(AppRoutes.dashboard);
+        context.go(AppRoutes.splash);
       }
     } on FirebaseAuthException catch (e) {
       String message;
@@ -65,13 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
         default:
           message = 'Login failed: ${e.message}';
       }
-      
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(message),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text(message), backgroundColor: Colors.red),
         );
       }
     } finally {
@@ -93,11 +90,17 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 40), // This is correct - uses SizedBox for whitespace
+              const SizedBox(
+                height: 40,
+              ), // This is correct - uses SizedBox for whitespace
               // Logo
               SizedBox(
                 height: 100,
-                child: const Icon(Icons.home_work, size: 80, color: Colors.teal),
+                child: const Icon(
+                  Icons.home_work,
+                  size: 80,
+                  color: Colors.teal,
+                ),
               ),
               const SizedBox(height: 20), // This is correct
               Text(
@@ -114,7 +117,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 40), // This is correct
-
               // Email Field
               TextFormField(
                 controller: _emailController,
@@ -131,7 +133,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16), // This is correct
-
               // Password Field
               TextFormField(
                 controller: _passwordController,
@@ -141,7 +142,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   prefixIcon: const Icon(Icons.lock_outline),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      _obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
                     onPressed: () {
                       setState(() {
@@ -170,7 +173,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               const SizedBox(height: 24), // This is correct
-
               // Login Button
               SizedBox(
                 height: 50,
@@ -186,17 +188,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: _isLoading
                       ? const CircularProgressIndicator(
                           strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
                         )
                       : const Text(
                           'Login',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                 ),
               ),
 
               const SizedBox(height: 16), // This is correct
-
               // Register link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -223,31 +229,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -139,7 +139,7 @@ void main() async {
   
   try {
     // Load environment variables - this is crucial!
-    await dotenv.load(fileName: ".env");
+    await dotenv.load(fileName: "assets/.env");
     print('✅ Environment variables loaded');
     print('🔑 Project ID: ${dotenv.env['FIREBASE_PROJECT_ID']}');
     

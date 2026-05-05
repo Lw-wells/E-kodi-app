@@ -14,6 +14,11 @@ import '../features/finances/views/finances_screen.dart';
 import '../features/finances/views/add_utility_screen.dart';
 import '../features/communications/views/communications_screen.dart';
 import '../features/communications/views/compose_message_screen.dart';
+// Add these imports
+import '../features/tenant/views/tenant_dashboard_screen.dart';
+import '../features/tenant/views/tenant_bills_screen.dart';
+import '../features/tenant/views/tenant_payments_screen.dart';
+import '../features/tenant/views/tenant_messages_screen.dart';
 
 class AppRoutes {
   static const String splash        = '/';
@@ -29,6 +34,10 @@ class AppRoutes {
   static const String finances      = '/finances';
   static const String communications = '/communications';
   static const String composeMessage = '/communications/compose';
+  static const String tenantDashboard = '/tenant/dashboard';
+  static const String tenantBills     = '/tenant/bills';
+static const String tenantPayments  = '/tenant/payments';
+static const String tenantMessages  = '/tenant/messages';
   
 
   static final GoRouter router = GoRouter(
@@ -40,6 +49,10 @@ class AppRoutes {
       GoRoute(path: register,    builder: (context, state) => const RegisterScreen()),
       GoRoute(path: dashboard,   builder: (context, state) => const DashboardScreen()),
       GoRoute(path: properties,  builder: (context, state) => const PropertiesScreen()),
+      GoRoute(path: '/tenant/dashboard', builder: (context, state) => const TenantDashboardScreen()),
+GoRoute(path: '/tenant/bills',     builder: (context, state) => const TenantBillsScreen()),
+GoRoute(path: '/tenant/payments',  builder: (context, state) => const TenantPaymentsScreen()),
+GoRoute(path: '/tenant/messages',  builder: (context, state) => const TenantMessagesScreen()),
 
       // ✅ /properties/add BEFORE /properties/:id
       GoRoute(path: addProperty, builder: (context, state) => const AddPropertyScreen()),

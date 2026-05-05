@@ -426,7 +426,7 @@ export const receiveReply = functions.https.onRequest(async (req, res) => {
             phone: from,
             body: text,
             channel: "sms",
-            messageType,
+            messageType,  // ✅ 'maintenance', 'general', or 'reply'
             isResolved: false,
             receivedAt: date ?? new Date().toISOString(),
             createdAt: admin.firestore.FieldValue.serverTimestamp(),
@@ -436,5 +436,38 @@ export const receiveReply = functions.https.onRequest(async (req, res) => {
     } catch (error) {
         console.error("receiveReply error:", error);
         res.status(500).send("Error");
+    }
+});
+// ── 8. Create tenant auth account (called from Flutter) ───────────────────
+export const createTenantAuthAccount = functions.https.onCall(async (request) => {
+    const { email, password, tenantId, unitId, unitName, propertyId, propertyName, name, phone } = request.data;
+
+    try {
+        // Create user via Admin SDK — doesn't affect current session
+        const userRecord = await admin.auth().createUser({
+            email,
+            password,
+            displayName: name,
+        });
+
+        // Write to Firestore
+        await db.collection("users").doc(userRecord.uid).set({
+            uid: userRecord.uid,
+            email,
+            name,
+            phone: phone ?? "",
+            role: "tenant",
+            tenantId,
+            unitId,
+            unitName,
+            propertyId,
+            propertyName,
+            createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+
+        return { success: true, uid: userRecord.uid };
+
+    } catch (error: any) {
+        throw new functions.https.HttpsError("internal", error.message);
     }
 });

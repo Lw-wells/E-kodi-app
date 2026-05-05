@@ -68,10 +68,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     try {
       // Register user using AuthService
-      await _authService.registerWithEmail(
+      await _authService.registerLandlord(
         email: _emailController.text.trim(),
         password: _passwordController.text,
-        fullName: _nameController.text.trim(),
+        name: _nameController.text.trim(),
         phone: _phoneController.text.trim(),
       );
 
