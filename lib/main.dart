@@ -11,22 +11,22 @@
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
-  
+
 //   try {
 //     // Load environment variables
 //     await dotenv.load();
 //     print('✅ Environment variables loaded');
-    
+
 //     // Initialize Hive
 //     await Hive.initFlutter();
 //     print('✅ Hive initialized');
-    
+
 //     // Initialize Firebase
 //     await Firebase.initializeApp(
 //       options: DefaultFirebaseOptions.currentPlatform,
 //     );
 //     print('✅ Firebase initialized for ${kIsWeb ? 'web' : 'mobile'}');
-    
+
 //   } catch (e, stackTrace) {
 //     print('❌ Initialization error: $e');
 //     print('Stack trace: $stackTrace');
@@ -55,30 +55,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // // import 'package:flutter/material.dart';
 // // import 'package:flutter_riverpod/flutter_riverpod.dart';
 // // import 'package:hive_flutter/hive_flutter.dart';
@@ -90,10 +66,10 @@
 
 // // void main() async {
 // //   WidgetsFlutterBinding.ensureInitialized();
-  
+
 // //   // Initialize Hive
 // //   await Hive.initFlutter();
-  
+
 // //   // Initialize Firebase
 // //   // await Firebase.initializeApp(
 // //   //   options: DefaultFirebaseOptions.currentPlatform,
@@ -122,7 +98,6 @@
 // //   }
 // // }
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -136,33 +111,32 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   try {
     // Load environment variables - this is crucial!
-    await dotenv.load(fileName: "assets/.env");
+    //only load .env on non web platforms
+    if (!kIsWeb) {
+      await dotenv.load(fileName: "assets/.env");
+    }
+
     print('✅ Environment variables loaded');
     print('🔑 Project ID: ${dotenv.env['FIREBASE_PROJECT_ID']}');
-    
+
     // Initialize Hive
     await Hive.initFlutter();
     print('✅ Hive initialized');
-    
+
     // Initialize Firebase
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     print('✅ Firebase initialized for ${kIsWeb ? 'web' : 'mobile'}');
-    
   } catch (e, stackTrace) {
     print('❌ Initialization error: $e');
     print('Stack trace: $stackTrace');
   }
 
-  runApp(
-    const ProviderScope(
-      child: EKodiApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: EKodiApp()));
 }
 
 class EKodiApp extends ConsumerWidget {
