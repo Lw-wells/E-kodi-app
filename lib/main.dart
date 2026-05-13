@@ -1,9 +1,62 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/foundation.dart' show kIsWeb;
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+// import 'config/routes.dart';
+// import 'config/theme.dart';
+// import 'firebase_options.dart';
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+
+//   try {
+//     if (!kIsWeb) {
+//       // ✅ Only load dotenv AND access dotenv.env on non-web
+//       await dotenv.load(fileName: "assets/env");
+//       print('✅ Environment variables loaded');
+//       print('🔑 Project ID: ${dotenv.env['FIREBASE_PROJECT_ID']}');
+//     } else {
+//       print('✅ Web platform — skipping dotenv');
+//     }
+
+//     await Hive.initFlutter();
+//     print('✅ Hive initialized');
+
+//     await Firebase.initializeApp(
+//       options: DefaultFirebaseOptions.currentPlatform,
+//     );
+//     print('✅ Firebase initialized for ${kIsWeb ? 'web' : 'mobile'}');
+//   } catch (e, stackTrace) {
+//     print('❌ Initialization error: $e');
+//     print('Stack trace: $stackTrace');
+//   }
+
+//   runApp(const ProviderScope(child: EKodiApp()));
+// }
+
+// class EKodiApp extends ConsumerWidget {
+//   const EKodiApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     return MaterialApp.router(
+//       title: 'E-Kodi',
+//       theme: AppTheme.lightTheme,
+//       darkTheme: AppTheme.darkTheme,
+//       themeMode: ThemeMode.system,
+//       routerConfig: AppRoutes.router,
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'config/routes.dart';
 import 'config/theme.dart';
@@ -13,25 +66,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
-    if (!kIsWeb) {
-      // ✅ Only load dotenv AND access dotenv.env on non-web
-      await dotenv.load(fileName: "assets/env");
-      print('✅ Environment variables loaded');
-      print('🔑 Project ID: ${dotenv.env['FIREBASE_PROJECT_ID']}');
-    } else {
-      print('✅ Web platform — skipping dotenv');
-    }
-
     await Hive.initFlutter();
-    print('✅ Hive initialized');
-
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    print('✅ Firebase initialized for ${kIsWeb ? 'web' : 'mobile'}');
-  } catch (e, stackTrace) {
+  } catch (e) {
     print('❌ Initialization error: $e');
-    print('Stack trace: $stackTrace');
   }
 
   runApp(const ProviderScope(child: EKodiApp()));
@@ -53,62 +93,69 @@ class EKodiApp extends ConsumerWidget {
   }
 }
 
-// // import 'package:flutter/material.dart';
-// // import 'package:flutter_riverpod/flutter_riverpod.dart';
-// // import 'package:hive_flutter/hive_flutter.dart';
-// // import 'package:firebase_core/firebase_core.dart';
-// // import 'package:flutter/foundation.dart' show kIsWeb;
-// // import 'package:flutter_dotenv/flutter_dotenv.dart'; // Add this for dotenv
 
-// // import 'config/routes.dart';
-// // import 'config/theme.dart';
-// // import 'firebase_options.dart'; // ✅ Fixed import path
+// 222222222
+// import 'package:flutter/material.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/foundation.dart' show kIsWeb;
+// import 'package:flutter_dotenv/flutter_dotenv.dart'; // Add this for dotenv
 
-// // void main() async {
-// //   WidgetsFlutterBinding.ensureInitialized();
+// import 'config/routes.dart';
+// import 'config/theme.dart';
+// import 'firebase_options.dart'; // ✅ Fixed import path
 
-// //   try {
-// //     // Load environment variables
-// //     await dotenv.load();
-// //     print('✅ Environment variables loaded');
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
 
-// //     // Initialize Hive
-// //     await Hive.initFlutter();
-// //     print('✅ Hive initialized');
+//   try {
+//     // Load environment variables
+//     if (!kIsWeb) {
+//       // Load environment variables
+//       await dotenv.load(fileName: "assets/.env");
+//       print('✅ Environment variables loaded');
+//     }
 
-// //     // Initialize Firebase
-// //     await Firebase.initializeApp(
-// //       options: DefaultFirebaseOptions.currentPlatform,
-// //     );
-// //     print('✅ Firebase initialized for ${kIsWeb ? 'web' : 'mobile'}');
+//     // Initialize Hive
+//     await Hive.initFlutter();
+//     print('✅ Hive initialized');
 
-// //   } catch (e, stackTrace) {
-// //     print('❌ Initialization error: $e');
-// //     print('Stack trace: $stackTrace');
-// //   }
+//     // Initialize Firebase
+//     await Firebase.initializeApp(
+//       options: DefaultFirebaseOptions.currentPlatform,
+//     );
+//     print('✅ Firebase initialized for ${kIsWeb ? 'web' : 'mobile'}');
+//   } catch (e, stackTrace) {
+//     print('❌ Initialization error: $e');
+//     print('Stack trace: $stackTrace');
+//   }
 
-// //   runApp(
-// //     const ProviderScope(
-// //       child: EKodiApp(),
-// //     ),
-// //   );
-// // }
+//   runApp(const ProviderScope(child: EKodiApp()));
+// }
 
-// // class EKodiApp extends ConsumerWidget {
-// //   const EKodiApp({super.key});
+// class EKodiApp extends ConsumerWidget {
+//   const EKodiApp({super.key});
 
-// //   @override
-// //   Widget build(BuildContext context, WidgetRef ref) {
-// //     return MaterialApp.router(
-// //       title: 'E-Kodi',
-// //       theme: AppTheme.lightTheme,
-// //       darkTheme: AppTheme.darkTheme,
-// //       themeMode: ThemeMode.system,
-// //       routerConfig: AppRoutes.router,
-// //       debugShowCheckedModeBanner: false,
-// //     );
-// //   }
-// // }
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     return MaterialApp.router(
+//       title: 'E-Kodi',
+//       theme: AppTheme.lightTheme,
+//       darkTheme: AppTheme.darkTheme,
+//       themeMode: ThemeMode.system,
+//       routerConfig: AppRoutes.router,
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
+
+
+
+
+
+
+
 
 // // // import 'package:flutter/material.dart';
 // // // import 'package:flutter_riverpod/flutter_riverpod.dart';
