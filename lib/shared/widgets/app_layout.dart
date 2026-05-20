@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../config/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AppLayout extends StatelessWidget {
   final Widget child;
@@ -21,19 +22,13 @@ class AppLayout extends StatelessWidget {
 
     return Scaffold(
       appBar: !showSidebar
-          ? AppBar(
-              title: const Text('E-Kodi Owner Dashboard'),
-            )
+          ? AppBar(title: const Text('E-Kodi Owner Dashboard'))
           : null,
       drawer: !showSidebar ? _buildSidebar(context) : null,
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (showSidebar)
-            SizedBox(
-              width: 250,
-              child: _buildSidebar(context),
-            ),
+          if (showSidebar) SizedBox(width: 250, child: _buildSidebar(context)),
           Expanded(
             child: Column(
               children: [
@@ -69,7 +64,9 @@ class AppLayout extends StatelessWidget {
                   ),
                 Expanded(
                   child: Container(
-                    color: Theme.of(context).colorScheme.surfaceContainerHighest.withAlpha(50),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest.withAlpha(50),
                     child: child,
                   ),
                 ),
@@ -90,14 +87,18 @@ class AppLayout extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Icon(Icons.home_work, color: Theme.of(context).colorScheme.primary, size: 32),
+                Icon(
+                  Icons.home_work,
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 32,
+                ),
                 const SizedBox(width: 12),
                 Text(
                   'E-KODI',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ],
             ),
@@ -143,17 +144,26 @@ class AppLayout extends StatelessWidget {
           _SidebarItem(
             icon: Icons.settings_outlined,
             title: 'Settings',
-            isSelected: false,
-            onTap: () {},
+            isSelected: currentLocation == '/settings',
+            onTap: () => context.go('/settings'),
           ),
           _SidebarItem(
             icon: Icons.logout,
             title: 'Logout',
             isSelected: false,
-            onTap: () {
-              context.go(AppRoutes.login);
+            onTap: () async {
+              await FirebaseAuth.instance.signOut();
+              if (context.mounted) context.go(AppRoutes.login);
             },
           ),
+          // _SidebarItem(
+          //   icon: Icons.logout,
+          //   title: 'Logout',
+          //   isSelected: false,
+          //   onTap: () {
+          //     context.go(AppRoutes.login);
+          //   },
+          // ),
           const SizedBox(height: 24),
         ],
       ),
@@ -179,7 +189,9 @@ class _SidebarItem extends StatelessWidget {
     return ListTile(
       leading: Icon(
         icon,
-        color: isSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).iconTheme.color,
+        color: isSelected
+            ? Theme.of(context).colorScheme.primary
+            : Theme.of(context).iconTheme.color,
       ),
       title: Text(
         title,
