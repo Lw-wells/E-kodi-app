@@ -20,6 +20,7 @@ import '../features/tenant/views/tenant_bills_screen.dart';
 import '../features/tenant/views/tenant_payments_screen.dart';
 import '../features/tenant/views/tenant_messages_screen.dart';
 import '../features/settings/views/settings_screen.dart';
+import '../features/settings/views/tenant_settings_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -40,6 +41,7 @@ class AppRoutes {
   static const String tenantPayments = '/tenant/payments';
   static const String tenantMessages = '/tenant/messages';
   static const String settings = '/settings';
+  static const String tenantSettings = '/tenant/settings';
 
   static final GoRouter router = GoRouter(
     initialLocation: splash,
@@ -78,6 +80,9 @@ class AppRoutes {
         path: '/tenant/messages',
         builder: (context, state) => const TenantMessagesScreen(),
       ),
+      GoRoute(
+          path: '/tenant/settings',
+          builder: (context, state) => const TenantSettingsScreen()),
 
       // ✅ /properties/add BEFORE /properties/:id
       GoRoute(

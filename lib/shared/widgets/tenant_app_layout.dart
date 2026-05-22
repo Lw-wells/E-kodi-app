@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
 class TenantAppLayout extends StatelessWidget {
   final Widget child;
   final String currentLocation;
@@ -85,6 +86,8 @@ class TenantAppLayout extends StatelessWidget {
                     'Payment History'),
                 _navItem(context, '/tenant/messages', Icons.message,
                     'Messages'),
+                _navItem(context, '/tenant/settings',  Icons.settings,
+                    'Settings'),
               ],
             ),
           ),
