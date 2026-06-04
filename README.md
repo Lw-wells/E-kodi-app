@@ -14,7 +14,6 @@
 ### Why E-Kodi?
 
 - **🇰🇪 Kenyan-First**: Built specifically for the Kenyan rental market with M-Pesa integration
-- **📱 No App Required**: Tenants interact via WhatsApp - no downloads needed
 - **💰 Revenue Assurance**: Automated tracking prevents revenue leakage
 - **🚀 Real-Time**: Instant payment confirmation and receipt generation
 - **🔒 Secure**: Enterprise-grade authentication and data protection
@@ -30,7 +29,6 @@
 | 👥 **Tenant Management** | Track tenants, lease agreements, and contact details |
 | 💳 **M-Pesa Integration** | Initiate STK Push payments directly to tenants |
 | 💡 **Utility Billing** | Manage water, electricity, and other bills |
-| 📊 **Financial Reports** | Generate revenue reports, tax summaries, and analytics |
 | 📱 **Real-time Dashboard** | View occupancy rates and payment trends instantly |
 | 📢 **Bulk Communication** | Send announcements via WhatsApp/SMS to all tenants |
 | 📄 **Document Storage** | Store receipts, agreements, and tenant IDs securely |
@@ -38,10 +36,8 @@
 ### For Tenants 👨‍👩‍👧‍👦
 | Feature | Description |
 |---------|-------------|
-| 💬 **WhatsApp Bot** | Pay rent using simple text commands |
 | 💰 **Balance Inquiry** | Check outstanding balance anytime |
 | 📜 **Payment History** | View all past payment records |
-| 🧾 **Receipt Download** | Get payment receipts as PDF via WhatsApp |
 | 🔧 **Maintenance Requests** | Report issues with photos and descriptions |
 | 📢 **Announcements** | Receive important updates from landlord |
 | 🔔 **Payment Reminders** | Automatic reminders before rent due date |
@@ -60,7 +56,6 @@
 | **Real-time DB** | Firebase Firestore | Latest |
 | **Authentication** | Firebase Auth | Latest |
 | **Cache** | Redis | 7.x |
-| **WhatsApp** | Twilio API / Evolution API | Latest |
 | **M-Pesa** | Safaricom Daraja API | v1 |
 | **File Storage** | Firebase Storage | Latest |
 
@@ -437,7 +432,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Insurance integration
 - AI-powered maintenance prediction
 - Blockchain for lease contracts
-
+📊 **Financial Reports** | Generate revenue reports, tax summaries, and analytics |
 ---
 
 **Built with ❤️ for the Kenyan rental market** 🇰🇪
