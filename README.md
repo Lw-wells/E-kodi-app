@@ -213,17 +213,6 @@ POST /api/payments/initiate
   "message": "STK Push sent to customer"
 }
 ```
-
-### WhatsApp Bot Commands
-
-| Command | Description | Example |
-|---------|-------------|---------|
-| `pay [amount]` | Make payment | `pay 15000` |
-| `balance` | Check balance | `balance` |
-| `receipt [month]` | Get receipt | `receipt january` |
-| `report [issue]` | Report problem | `report leaking tap` |
-| `help` | Show all commands | `help` |
-
 ---
 
 ## 📊 Database Schema
@@ -415,7 +404,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Property management CRUD
 - Tenant management
 - M-Pesa STK Push integration
-- WhatsApp bot with basic commands
 - Payment history & receipts
 - Dashboard with analytics
 
